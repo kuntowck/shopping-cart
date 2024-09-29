@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { CartContext } from "./CartContext";
+import useStore from "./CartContext";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -11,7 +10,7 @@ import {
 import { TrashIcon } from "@radix-ui/react-icons/dist";
 
 export default function Cart() {
-  const { cart, removeFromCart, getTotalPrice } = useContext(CartContext);
+  const { cart, totalPrice, removeFromCart } = useStore();
 
   return (
     <div className="flex">
@@ -47,7 +46,7 @@ export default function Cart() {
           </div>
         )}
         <CardFooter className="text-md font-bold">
-          <p>Total: Rp{getTotalPrice()}</p>
+          <p>Total: Rp{totalPrice}</p>
         </CardFooter>
       </Card>
     </div>
