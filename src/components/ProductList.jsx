@@ -1,6 +1,11 @@
-import { useContext } from "react";
-import { CartContext } from "./CartContext";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import useStore from "./CartContext";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 const products = [
@@ -10,7 +15,7 @@ const products = [
 ];
 
 export default function ProductList() {
-  const { addToCart } = useContext(CartContext);
+  const { addToCart } = useStore();
 
   return (
     <div className="my-5">
@@ -19,20 +24,20 @@ export default function ProductList() {
       </header>
       <div className="flex flex-row gap-4 ">
         {products.map((product) => (
-          <Card key={product.id} className="flex-auto justify-items-center">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-md font-medium">
+          <Card key={product.id} className="max-w-48 ">
+            <CardHeader className="flex justify-center">
+              <CardTitle className="text-sm font-normal text-slate-600">
                 {product.name}
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-xl font-bold">
+            <CardContent className="text-md font-bold text-slate-800">
               <p>Rp{product.price}</p>
             </CardContent>
-            <CardContent>
+            <CardFooter>
               <Button variant="outline" onClick={() => addToCart(product)}>
-                Add to Cart
+                Add to cart
               </Button>
-            </CardContent>
+            </CardFooter>
           </Card>
         ))}
       </div>

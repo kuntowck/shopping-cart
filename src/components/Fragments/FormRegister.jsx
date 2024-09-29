@@ -11,14 +11,24 @@ const FormRegister = () => {
         name="username"
         placeholder="johndoe"
       />
-      <InputForm text="Email" type="email" name="email" placeholder="johndoe" />
+      <InputForm
+        text="Email"
+        type="email"
+        name="email"
+        placeholder="m@example.com"
+      />
       <InputForm
         text="Password"
         type="password"
         name="password"
         placeholder="********"
       />
-      <InputForm text="Confirm Password" type="password" name="password" placeholder="********" />
+      <InputForm
+        text="Confirm Password"
+        type="password"
+        name="password"
+        placeholder="********"
+      />
       <ButtonAuth name="register" text="Sign up" />
     </form>
   );
