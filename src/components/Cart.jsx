@@ -10,6 +10,8 @@ import {
 import { TrashIcon } from "@radix-ui/react-icons/dist";
 
 export default function Cart() {
+  console.log("render cart");
+
   const { cart, totalPrice, removeFromCart } = useStore();
 
   return (
