@@ -16,12 +16,8 @@ const products = [
 ];
 
 export default function ProductList() {
-  console.log("render product list");
-
   const { addToCart } = useStore(
-    useShallow((state) => ({
-      addToCart: state.addToCart,
-    }))
+    useShallow((state) => ({ addToCart: state.addToCart }))
   );
 
   return (
