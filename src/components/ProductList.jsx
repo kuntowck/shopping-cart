@@ -1,4 +1,5 @@
 import useStore from "./CartContext";
+import { useShallow } from "zustand/react/shallow";
 import {
   Card,
   CardContent,
@@ -15,7 +16,13 @@ const products = [
 ];
 
 export default function ProductList() {
-  const { addToCart } = useStore();
+  console.log("render product list");
+
+  const { addToCart } = useStore(
+    useShallow((state) => ({
+      addToCart: state.addToCart,
+    }))
+  );
 
   return (
     <div className="my-5">

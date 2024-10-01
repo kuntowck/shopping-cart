@@ -1,3 +1,4 @@
+import { useShallow } from "zustand/react/shallow";
 import useStore from "./CartContext";
 import { Button } from "./ui/button";
 import {
@@ -10,7 +11,15 @@ import {
 import { TrashIcon } from "@radix-ui/react-icons/dist";
 
 export default function Cart() {
-  const { cart, totalPrice, removeFromCart } = useStore();
+  console.log("render cart");
+
+  const { cart, totalPrice, removeFromCart } = useStore(
+    useShallow((state) => ({
+      cart: state.cart,
+      totalPrice: state.totalPrice,
+      removeFromCart: state.removeFromCart,
+    }))
+  );
 
   return (
     <div className="flex">
