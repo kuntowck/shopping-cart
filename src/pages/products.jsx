@@ -1,5 +1,5 @@
 import Cart from "../components/Cart";
-import { CartProvider } from "@/components/CartContext";
+import { CartProvider } from "@/context/CartContext";
 import ProductLayout from "@/components/Layouts/ProductLayout";
 import CardProduct from "@/components/Fragments/CardProduct";
 

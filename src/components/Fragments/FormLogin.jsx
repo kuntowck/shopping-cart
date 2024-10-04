@@ -1,4 +1,4 @@
-import ButtonAuth from "../Elements/Button/ButtonAuth.jsx";
+import ButtonAuth from "../Elements/ButtonAuth.jsx";
 import InputForm from "../Elements/Input/index.jsx";
 
 const FormLogin = () => {

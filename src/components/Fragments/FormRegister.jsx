@@ -1,4 +1,4 @@
-import ButtonAuth from "../Elements/Button/ButtonAuth";
+import ButtonAuth from "../Elements/ButtonAuth";
 import InputForm from "../Elements/Input";
 
 const FormRegister = () => {
@@ -18,7 +18,12 @@ const FormRegister = () => {
         name="password"
         placeholder="********"
       />
-      <InputForm text="Confirm Password" type="password" name="password" placeholder="********" />
+      <InputForm
+        text="Confirm Password"
+        type="password"
+        name="password"
+        placeholder="********"
+      />
       <ButtonAuth name="register" text="Sign up" />
     </form>
   );

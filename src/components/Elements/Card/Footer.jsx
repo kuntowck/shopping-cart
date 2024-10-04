@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useContext } from "react";
-import { CartContext } from "@/components/CartContext";
+import { CartContext } from "@/context/CartContext";
 import { CardFooter } from "@/components/ui/card";
 
 const Footer = ({ product }) => {
