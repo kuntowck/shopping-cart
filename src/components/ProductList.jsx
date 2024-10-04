@@ -1,7 +1,7 @@
-import { useContext } from "react";
-import { CartContext } from "./CartContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useDispatch } from "react-redux";
+import { addToCart } from "./redux/cartSlice";
 
 const products = [
   { id: 1, name: "Product 1", price: 10000 },
@@ -10,7 +10,7 @@ const products = [
 ];
 
 export default function ProductList() {
-  const { addToCart } = useContext(CartContext);
+  const dispatch = useDispatch();
 
   return (
     <div className="my-5">
@@ -29,7 +29,10 @@ export default function ProductList() {
               <p>Rp{product.price}</p>
             </CardContent>
             <CardContent>
-              <Button variant="outline" onClick={() => addToCart(product)}>
+              <Button
+                variant="outline"
+                onClick={() => dispatch(addToCart(product))}
+              >
                 Add to Cart
               </Button>
             </CardContent>

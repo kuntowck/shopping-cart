@@ -3,7 +3,10 @@ import AuthLayout from "@/components/Layouts/AuthLayout";
 
 const LoginPage = () => {
   return (
-    <AuthLayout title="Login" text={"Welcome, please enter your details below."}>
+    <AuthLayout
+      title="Login"
+      text={"Welcome, please enter your details below."}
+    >
       <FormLogin />
     </AuthLayout>
   );

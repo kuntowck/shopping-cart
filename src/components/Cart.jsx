@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { CartContext } from "./CartContext";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -9,9 +7,13 @@ import {
   CardTitle,
 } from "./ui/card";
 import { TrashIcon } from "@radix-ui/react-icons/dist";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart } from "./redux/cartSlice";
 
 export default function Cart() {
-  const { cart, removeFromCart, getTotalPrice } = useContext(CartContext);
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.cart);
+  const totalPrice = useSelector((state) => state.cart.totalPrice);
 
   return (
     <div className="flex">
@@ -36,7 +38,7 @@ export default function Cart() {
                 <CardContent>
                   <Button
                     variant="destructive"
-                    onClick={() => removeFromCart(item.id)}
+                    onClick={() => dispatch(removeFromCart(item.id))}
                   >
                     <TrashIcon className="h-4 w-4 mr-1" />
                     Remove
@@ -47,7 +49,7 @@ export default function Cart() {
           </div>
         )}
         <CardFooter className="text-md font-bold">
-          <p>Total: Rp{getTotalPrice()}</p>
+          <p>Total: Rp{totalPrice}</p>
         </CardFooter>
       </Card>
     </div>
