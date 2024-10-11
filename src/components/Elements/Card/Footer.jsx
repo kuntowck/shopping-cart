@@ -7,8 +7,8 @@ const Footer = ({ product }) => {
   const { addToCart } = useContext(CartContext);
 
   return (
-    <CardFooter>
-      <Button variant="outline" onClick={() => addToCart(product)}>
+    <CardFooter className="bg-red-200 flex justify-end">
+      <Button className="w-full" variant="outline" onClick={() => addToCart(product)}>
         Add to Cart
       </Button>
     </CardFooter>

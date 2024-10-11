@@ -1,20 +1,20 @@
-import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
-import { Button } from "./ui/button";
+import { useContext } from "react"
+import { CartContext } from "@/context/CartContext"
+import { Button } from "../ui/button"
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./ui/card";
-import { TrashIcon } from "@radix-ui/react-icons/dist";
+} from "../ui/card"
+import { TrashIcon } from "@radix-ui/react-icons/dist"
 
-export default function Cart() {
-  const { cart, removeFromCart, getTotalPrice } = useContext(CartContext);
+const CartLayout = () => {
+  const { cart, removeFromCart, getTotalPrice } = useContext(CartContext)
 
   return (
-    <div className="flex">
+    <div className="container mx-auto p-10">
       <Card>
         <CardHeader>
           <CardTitle className="text-md">My Cart</CardTitle>
@@ -30,7 +30,7 @@ export default function Cart() {
                 <CardContent>
                   <p className="text-md font-medium">{item.name}</p>
                   <p>
-                    Rp{item.price} x {item.quantity}
+                    ${item.price} x {item.quantity}
                   </p>
                 </CardContent>
                 <CardContent>
@@ -47,9 +47,11 @@ export default function Cart() {
           </div>
         )}
         <CardFooter className="text-md font-bold">
-          <p>Total: Rp{getTotalPrice()}</p>
+          <p>Total: ${getTotalPrice()}</p>
         </CardFooter>
       </Card>
     </div>
-  );
+  )
 }
+
+export default CartLayout

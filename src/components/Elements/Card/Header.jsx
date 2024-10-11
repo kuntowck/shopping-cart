@@ -1,11 +1,16 @@
-import { CardHeader, CardTitle } from "@/components/ui/card";
+import { CardHeader, CardContent } from "@/components/ui/card"
 
 const Header = ({ product }) => {
   return (
-    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-      <CardTitle className="text-md font-medium">{product.name}</CardTitle>
+    <CardHeader className="flex items-center justify-center pb-2">
+      <CardContent>
+        <a href="#">
+          <img src={product.image} alt={product.image} className="w-32" />
+        </a>
+      </CardContent>
+      
     </CardHeader>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

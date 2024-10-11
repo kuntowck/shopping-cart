@@ -1,26 +1,65 @@
-import Cart from "../components/Cart";
-import { CartProvider } from "@/context/CartContext";
-import ProductLayout from "@/components/Layouts/ProductLayout";
-import CardProduct from "@/components/Fragments/CardProduct";
+import { CartProvider } from "@/context/CartContext"
+import ProductLayout from "@/components/Layouts/ProductLayout"
+import CardProduct from "@/components/Fragments/CardProduct"
+import { useEffect } from "react"
+import { getProducts } from "@/services/product.service"
+import { useState } from "react"
+import CartLayout from "@/components/Layouts/CartLayout"
 
-const products = [
-  { id: 1, name: "Product 1", price: 10000 },
-  { id: 2, name: "Product 2", price: 20000 },
-  { id: 3, name: "Product 3", price: 30000 },
-];
 const ProductsPage = () => {
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    getProducts((data) => {
+      console.log(data)
+
+      setProducts(data)
+    })
+  }, [])
+
   return (
     <CartProvider>
+      <header className="bg-transparent w-full absolute top-0 left-0 flex items-center z-10">
+        <div className="container mx-auto px-10 py-4">
+          <div className="flex flex-row justify-between relative">
+            <div>
+              <div className="text-xl font-bold">Shopping Cart</div>
+            </div>
+
+            <nav>
+              <ul className="flex ">
+                <li className="group">
+                  <a href="/products" className="group-hover:text-slate-200">
+                    Products
+                  </a>
+                </li>
+                <li>
+                  <a href="/cart" className="mx-8 group-hover:text-slate-200">
+                    Cart
+                  </a>
+                </li>
+                <li>
+                  <a href="/" className="group-hover:text-slate-200">
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+
       <div className="container mx-auto p-10">
-        <div className="text-xl font-bold">Shopping Cart</div>
         <ProductLayout title={"Product List"}>
-          {products.map((product) => (
-            <CardProduct key={product.id} product={product} />
-          ))}
+          {products.length > 0 &&
+            products.map((product) => (
+              <CardProduct key={product.id} product={product} />
+            ))}
         </ProductLayout>
-        <Cart />
+
+        <CartLayout />
       </div>
     </CartProvider>
-  );
-};
-export default ProductsPage;
+  )
+}
+export default ProductsPage

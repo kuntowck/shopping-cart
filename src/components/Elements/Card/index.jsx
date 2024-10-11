@@ -1,5 +1,5 @@
-import Footer from "./Footer";
-import Header from "./Header";
+import Footer from "./Footer"
+import Header from "./Header"
 
 const CardItem = ({ product, children }) => {
   return (
@@ -8,7 +8,7 @@ const CardItem = ({ product, children }) => {
       {children}
       <Footer product={product} />
     </>
-  );
-};
+  )
+}
 
-export default CardItem;
+export default CardItem

@@ -4,7 +4,7 @@ const ProductLayout = ({ children, title }) => {
       <header>
         <h1>{title}</h1>
       </header>
-      <div className="flex flex-row gap-4">{children}</div>
+      <div className="flex flex-row flex-wrap gap-4">{children}</div>
     </div>
   );
 };
