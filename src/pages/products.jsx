@@ -5,17 +5,31 @@ import { useEffect } from "react"
 import { getProducts } from "@/services/product.service"
 import { useState } from "react"
 import CartLayout from "@/components/Layouts/CartLayout"
+import { getUsername } from "@/services/auth.service"
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([])
+  const [username, setUsername] = useState("")
 
   useEffect(() => {
     getProducts((data) => {
-      console.log(data)
-
       setProducts(data)
     })
   }, [])
+
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+      setUsername(getUsername(token))
+    } else {
+      window.location.href = "/"
+    }
+  }, [])
+
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    window.location.href = "/"
+  }
 
   return (
     <CartProvider>
@@ -39,9 +53,12 @@ const ProductsPage = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="/" className="group-hover:text-slate-200">
+                  <button
+                    className="group-hover:text-slate-200"
+                    onClick={handleLogout}
+                  >
                     Logout
-                  </a>
+                  </button>
                 </li>
               </ul>
             </nav>
@@ -50,6 +67,7 @@ const ProductsPage = () => {
       </header>
 
       <div className="container mx-auto p-10">
+        {username}
         <ProductLayout title={"Product List"}>
           {products.length > 0 &&
             products.map((product) => (
